@@ -28,6 +28,17 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /ready
+              port: 3000
+          readinessProbe:
+            httpGet:
+              path: /ready  # แก้ path ให้ถูกต้อง
+              port: 3000
+            initialDelaySeconds: 15  # ให้รอโหลดก่อนเริ่มตรวจสอบ
+            periodSeconds: 10
+            failureThreshold: 5  # ป้องกันการ restart บ่อยเกินไป
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
