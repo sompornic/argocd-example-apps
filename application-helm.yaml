@@ -8,8 +8,8 @@ spec:
   source:
     repoURL: 'https://github.com/sompornic/argocd-example-apps.git'
     targetRevision: master
-    # helm:
-    #   releaseName: my-release
+    helm:
+      releaseName: my-release
     path: helm-node # ใส่ path ที่มี deployment.yaml
   destination:
     server: 'https://kubernetes.default.svc' # ใช้ค่า default สำหรับ cluster ปัจจุบัน
