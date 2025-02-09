@@ -1,20 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: helm-app
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/sompornic/argocd-example-apps.git'
     targetRevision: master
+    # helm:
+    #   releaseName: my-release
     path: node-app # ใส่ path ที่มี deployment.yaml
   destination:
     server: 'https://kubernetes.default.svc' # ใช้ค่า default สำหรับ cluster ปัจจุบัน
-    namespace: my-app2 # Namespace ที่ต้องการ deploy
+    namespace: helm-app # Namespace ที่ต้องการ deploy
   syncPolicy:
-    # automated: 
-    #   prune: true # ลบ resource ที่ไม่จำเป็น  
-    #   selfHeal: true # Sync ใหม่เมื่อพบความคลาดเคลื่อน
     syncOptions:
       - CreateNamespace=true
