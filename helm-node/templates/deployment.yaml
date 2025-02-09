@@ -28,14 +28,6 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /ready
-              port: 3000
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: 3000
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
