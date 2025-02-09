@@ -10,7 +10,7 @@ spec:
     targetRevision: master
     # helm:
     #   releaseName: my-release
-    path: node-app # ใส่ path ที่มี deployment.yaml
+    path: helm-node # ใส่ path ที่มี deployment.yaml
   destination:
     server: 'https://kubernetes.default.svc' # ใช้ค่า default สำหรับ cluster ปัจจุบัน
     namespace: helm-app # Namespace ที่ต้องการ deploy
