@@ -30,15 +30,12 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /ready
-              port: 3000
+              path: /
+              port: http
           readinessProbe:
             httpGet:
-              path: /ready  # แก้ path ให้ถูกต้อง
-              port: 3000
-            initialDelaySeconds: 15  # ให้รอโหลดก่อนเริ่มตรวจสอบ
-            periodSeconds: 10
-            failureThreshold: 5  # ป้องกันการ restart บ่อยเกินไป
+              path: /
+              port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
