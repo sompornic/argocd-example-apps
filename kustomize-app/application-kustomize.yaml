@@ -1,19 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: helm-app
+  name: kustomize-app
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/sompornic/argocd-example-apps.git'
     targetRevision: master
-    helm:
-      releaseName: my-release
-    path: helm-node
+    path: kustomize-app
   destination:
     server: 'https://kubernetes.default.svc' # ใช้ค่า default สำหรับ cluster ปัจจุบัน
-    namespace: helm-app # Namespace ที่ต้องการ deploy
+    namespace: kustomize-app # Namespace ที่ต้องการ deploy
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

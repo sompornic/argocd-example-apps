@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kustomize-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: kustomize-app
+  template:
+    metadata:
+      labels:
+        app: kustomize-app
+    spec:
+      containers:
+      - image: sompornic/my-app:v1.0.0
+        name: kustomize-app
+        ports:
+        - containerPort: 80
