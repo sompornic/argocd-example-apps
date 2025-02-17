@@ -4,14 +4,14 @@ metadata:
   name: kustomize-app
   namespace: argocd
 spec:
+  destination:
+    server: 'https://kubernetes.default.svc' # ใช้ค่า default สำหรับ cluster ปัจจุบัน
+    namespace: kustomize-app # Namespace ที่ต้องการ deploy
   project: default
   source:
     repoURL: 'https://github.com/sompornic/argocd-example-apps.git'
     targetRevision: master
     path: kustomize-app
-  destination:
-    server: 'https://kubernetes.default.svc' # ใช้ค่า default สำหรับ cluster ปัจจุบัน
-    namespace: kustomize-app # Namespace ที่ต้องการ deploy
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
