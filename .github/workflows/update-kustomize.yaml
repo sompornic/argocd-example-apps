@@ -18,7 +18,7 @@ jobs:
       - name: Update kustomization.yaml with new image tag
         run: |
           ls -l
-          sed -i "s/newTag:.*/newTag: $COMMIT_HASH/" kustomization.yaml
+          sed -i "s/newTag:.*/newTag: $COMMIT_HASH/" kustomize-app/kustomization.yaml
           git add kustomization.yaml
           git commit -m "Update image tag to $COMMIT_HASH"
           git push origin master
