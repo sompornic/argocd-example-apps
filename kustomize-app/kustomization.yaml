@@ -3,5 +3,8 @@ namePrefix: kustomize-
 resources:
 - kustomize-app-deployment.yaml
 - kustomize-app-service.yaml
+images:
+  - name: sompornic/my-app   # ต้องตรงกับชื่อ image ใน Deployment
+    newTag: v1.0.6       # เปลี่ยนจาก latest เป็น v2.0
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
