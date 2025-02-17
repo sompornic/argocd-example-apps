@@ -9,8 +9,15 @@ jobs:
   update-kustomize:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Git user identity
+        run: |
+          git config --global user.name ${{ secrets.USER_NAME_GIT }}
+          git config --global user.email ${{ secrets.EMAIL_GIT }}
+
 
       - name: Get Git Commit Hash
         run: echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
