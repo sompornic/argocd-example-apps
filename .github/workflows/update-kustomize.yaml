@@ -1,0 +1,23 @@
+name: Update Kustomize Image Tag
+
+on:
+  push:
+    branches:
+      - master  # ทำงานเมื่อมีการ Push ไปยัง branch main
+
+jobs:
+  update-kustomize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get Git Commit Hash
+        run: echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Update kustomization.yaml with new image tag
+        run: |
+          sed -i "s/newTag:.*/newTag: $COMMIT_HASH/" ./kustomize-app/kustomization.yaml
+          git add kustomization.yaml
+          git commit -m "Update image tag to $COMMIT_HASH"
+          git push origin master
