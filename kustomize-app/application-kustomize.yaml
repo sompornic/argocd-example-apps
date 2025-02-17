@@ -12,6 +12,10 @@ spec:
     repoURL: 'https://github.com/sompornic/argocd-example-apps.git'
     targetRevision: master
     path: kustomize-app
+    kustomize:
+      namePrefix: test-
+      commonLabels:
+        app: demo
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
