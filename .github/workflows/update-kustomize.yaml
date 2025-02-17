@@ -31,4 +31,4 @@ jobs:
           git commit -m "Update image tag to $COMMIT_HASH"
       - name: Push changes to repository
         run: |
-          git push https://github-actions:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }} HEAD:master
+          git push https://${{ secrets.GH_TOKEN }}@github.com/sompornic/argocd-example-apps.git
