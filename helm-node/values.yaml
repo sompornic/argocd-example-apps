@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: sompornic/my-app
-  tag: v1.0.0
+  tag: v1.0.6
   pullPolicy: IfNotPresent
 
 service:
